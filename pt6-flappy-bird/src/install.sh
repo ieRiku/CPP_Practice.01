@@ -1,1 +1,1 @@
-g++ main.cpp -I pak64/include -L pak64/lib -m64 -lmingw32 -lSDL2main -lSDL2
+g++ main.cpp -I ../pak64/include -L ../pak64/lib -I ../pak64-img/include -L ../pak64-img/lib -m64 -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lstdc++ -o main.exe
