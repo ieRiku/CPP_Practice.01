@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_FlappyBirdClone: phony || .
 build CMakeFiles/FlappyBirdClone.dir/src/main.cpp.obj: CXX_COMPILER__FlappyBirdClone_unscanned_Debug D$:/RIKU/CODING/C_CPP/pt6-flappy-bird/src/main.cpp || cmake_object_order_depends_target_FlappyBirdClone
   DEP_FILE = CMakeFiles\FlappyBirdClone.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64/include -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64-img/include
+  INCLUDES = -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64/include -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64/include/SDL2 -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64-img/include
   OBJECT_DIR = CMakeFiles\FlappyBirdClone.dir
   OBJECT_FILE_DIR = CMakeFiles\FlappyBirdClone.dir\src
 
