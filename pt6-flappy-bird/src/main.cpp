@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 
 // Define screen dimensions
@@ -12,6 +13,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    // Initialize SDL_image
+    int imgFlags = IMG_INIT_PNG;
+    if (!(IMG_Init(imgFlags) & imgFlags)) {
+        std::cerr << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << std::endl;
+        SDL_Quit();
+        return 1;
+    }
+
     // Create window
     SDL_Window* window = SDL_CreateWindow("Flappy Bird Clone",
                                           SDL_WINDOWPOS_CENTERED,
@@ -20,6 +29,7 @@ int main(int argc, char* argv[]) {
                                           SDL_WINDOW_SHOWN);
     if (!window) {
         std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
+        IMG_Quit();
         SDL_Quit();
         return 1;
     }
@@ -29,14 +39,15 @@ int main(int argc, char* argv[]) {
     if (!renderer) {
         std::cerr << "Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         SDL_DestroyWindow(window);
+        IMG_Quit();
         SDL_Quit();
         return 1;
     }
 
-    // Load Background
-    SDL_Surface* bgSurface = SDL_LoadBMP("textures/images/background.bmp");
+    // Load Background (PNG)
+    SDL_Surface* bgSurface = IMG_Load("textures/images/background.png");
     if (!bgSurface) {
-        std::cerr << "Failed to load background image! SDL_Error: " << SDL_GetError() << std::endl;
+        std::cerr << "Failed to load background image! SDL_image Error: " << IMG_GetError() << std::endl;
     }
     SDL_Texture* background = SDL_CreateTextureFromSurface(renderer, bgSurface);
     SDL_FreeSurface(bgSurface);
@@ -44,10 +55,10 @@ int main(int argc, char* argv[]) {
         std::cerr << "Failed to create background texture! SDL_Error: " << SDL_GetError() << std::endl;
     }
 
-    // Load Flappy Bird
-    SDL_Surface* birdSurface = SDL_LoadBMP("textures/images/plane.bmp");
+    // Load Flappy Bird (PNG)
+    SDL_Surface* birdSurface = IMG_Load("textures/images/plane.png");
     if (!birdSurface) {
-        std::cerr << "Failed to load bird image! SDL_Error: " << SDL_GetError() << std::endl;
+        std::cerr << "Failed to load bird image! SDL_image Error: " << IMG_GetError() << std::endl;
     }
     SDL_Texture* birdTexture = SDL_CreateTextureFromSurface(renderer, birdSurface);
     SDL_FreeSurface(birdSurface);
@@ -56,11 +67,10 @@ int main(int argc, char* argv[]) {
     }
     SDL_Rect birdRect = { 100, SCREEN_HEIGHT / 2 - 25, 50, 50 }; // Initial position and size
 
-
-    // Load Ground
-    SDL_Surface* groundSurface = SDL_LoadBMP("textures/images/ground.bmp");
+    // Load Ground (PNG)
+    SDL_Surface* groundSurface = IMG_Load("textures/images/ground.png");
     if (!groundSurface) {
-        std::cerr << "Failed to load ground image! SDL_Error: " << SDL_GetError() << std::endl;
+        std::cerr << "Failed to load ground image! SDL_image Error: " << IMG_GetError() << std::endl;
     }
     SDL_Texture* groundTexture = SDL_CreateTextureFromSurface(renderer, groundSurface);
     SDL_FreeSurface(groundSurface);
@@ -69,10 +79,10 @@ int main(int argc, char* argv[]) {
     }
     SDL_Rect groundRect = { 0, SCREEN_HEIGHT - 100, SCREEN_WIDTH, 100 }; // Position at bottom
 
-    // Load Obstacle (Tower)
-    SDL_Surface* obstacleSurface = SDL_LoadBMP("textures/images/tower.bmp");
+    // Load Obstacle (Tower PNG)
+    SDL_Surface* obstacleSurface = IMG_Load("textures/images/tower.png");
     if (!obstacleSurface) {
-        std::cerr << "Failed to load obstacle image! SDL_Error: " << SDL_GetError() << std::endl;
+        std::cerr << "Failed to load obstacle image! SDL_image Error: " << IMG_GetError() << std::endl;
     }
     SDL_Texture* obstacleTexture = SDL_CreateTextureFromSurface(renderer, obstacleSurface);
     SDL_FreeSurface(obstacleSurface);
@@ -155,6 +165,7 @@ int main(int argc, char* argv[]) {
     SDL_DestroyTexture(obstacleTexture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    IMG_Quit();
     SDL_Quit();
 
     return 0;

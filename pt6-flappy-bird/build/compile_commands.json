@@ -1,7 +1,7 @@
 [
 {
   "directory": "D:/RIKU/CODING/C_CPP/pt6-flappy-bird/build",
-  "command": "C:\\mingw64\\bin\\c++.exe -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64/include -g -std=gnu++17 -o CMakeFiles\\FlappyBirdClone.dir\\src\\main.cpp.obj -c D:\\RIKU\\CODING\\C_CPP\\pt6-flappy-bird\\src\\main.cpp",
+  "command": "C:\\mingw64\\bin\\c++.exe -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64/include -ID:/RIKU/CODING/C_CPP/pt6-flappy-bird/pak64-img/include -g -std=gnu++17 -o CMakeFiles\\FlappyBirdClone.dir\\src\\main.cpp.obj -c D:\\RIKU\\CODING\\C_CPP\\pt6-flappy-bird\\src\\main.cpp",
   "file": "D:\\RIKU\\CODING\\C_CPP\\pt6-flappy-bird\\src\\main.cpp",
   "output": "CMakeFiles\\FlappyBirdClone.dir\\src\\main.cpp.obj"
 }

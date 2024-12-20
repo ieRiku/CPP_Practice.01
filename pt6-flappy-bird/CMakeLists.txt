@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Specify the path to SDL2 and SDL_image
 set(SDL2_DIR "${CMAKE_SOURCE_DIR}/pak64")
-set(SDL2_IMAGE_DIR "${CMAKE_SOURCE_DIR}/pak64")
+set(SDL2_IMAGE_DIR "${CMAKE_SOURCE_DIR}/pak64-img")
 
 # Include directories
 include_directories(${SDL2_DIR}/include)
